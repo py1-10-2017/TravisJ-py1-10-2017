@@ -1,43 +1,47 @@
 from flask import Flask, render_template, redirect, session, request
 
-
 app = Flask(__name__)
-app.secret_key = 'MySecretKey'
+
+
+app.secret_key = 'lskdjf;lajfj'
+
+import random
 
 
 @app.route('/')
 def main():
-    import random
-    # Set a random number
-    winningNum = random.randrange(0, 11)
-    session['winningNum'] = winningNum
-    #response = session['response']
-    print "The answer is:", winningNum
-    session['count'] = 0
+    if 'winning_number' not in session:
+        session['winning_number'] = random.randrange(0, 101)
+        #session['response'] = ''
+        print session['winning_number'], "- is the winning number"
 
-    return render_template('index.html')
+    return render_template('index.html', response=session['response'])
 
 
 @app.route('/guess', methods=['POST'])
 def guess():
-    session['count'] += 1
     guess = request.form['guess']
-    winningNum = session['winningNum']
+    winning_number = session['winning_number']
 
-    if guess > winningNum:
-        print "Too high"
-        session['response'] = 'Too high!'
+    if int(guess) > int(winning_number):
+        print "Too high."
+        session['response'] = str(guess) + ' - Too high!'
+        return redirect('/')
+    elif int(guess) < int(winning_number):
+        print "Too low."
+        session['response'] = str(guess) + ' - Too low!'
+        return redirect('/')
+    else:
+        print winning_number, " is correct! You win!"
+        session['response'] = str(winning_number) + " - You win!"
+        session.pop('winning_number')
         return redirect('/')
 
-    if guess < winningNum:
-        print "Too low"
-        session['response'] = 'Too low!'
-        return redirect('/')
 
-    if guess == winningNum:
-        print "You win"
-        session['response'] = "You win! Nice job!"
-        return redirect('/')
+@app.route('/reset', methods=['POST'])
+def reset():
+
+    return redirect('/')
 
 
 app.run(debug=True)

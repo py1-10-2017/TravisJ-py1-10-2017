@@ -8,32 +8,64 @@
     <title>Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
         crossorigin="anonymous">
+
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 3em;
+            margin-bottom: 1em;
+        }
+
+        .answer {
+            background-color: #e6e6e6;
+            border: 1px solid gray;
+            padding: 1em;
+            margin: 1em;
+            font-size: 2em;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-12">
                 <h1>Welcome to the Great Number Game</h1>
-                <p>I am thinking of a number between 1 and 100.</p>
-                <p>Take a guess!</p>
+                <p>I am thinking of a number between 1 and 100. Take a guess!</p>
+                <div class="row justify-content-center">
+                    <div class="answer col-4">
+                        {{ session['response'] }}
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-8">
                 <form action="/guess" method="post">
-                    <div class="form-group">
-                        <input type="number" name="guess" id="guess" class="form-control" placeholder="Guess here">
+                    <div class="form-group row justify-content-center">
+                        <div class="col-md-3">
+                            <input type="number" name="guess" id="guess" class="form-control" required>
+                        </div>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-md-2">
                             <button class="btn btn-primary">Guess</button>
-                            <p>{{ session['count'] }}</p>
-                        </div>
-                        <div class="col-md-8">
-                            {{ session['response'] }}
                         </div>
                     </div>
                 </form>
@@ -45,6 +77,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
         crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
