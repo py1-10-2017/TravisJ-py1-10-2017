@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dojo Survey</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script src="{{ url_for('static', filename='jquery-3.2.1.min.js') }}"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h2>Your Information:</h2>
+                <table class="table">
+                    <tr>
+                        <td>Name:</td>
+                        <td>{{ name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dojo Location:</td>
+                        <td>{{ location }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Favorite Language:</td>
+                        <td>{{ language }}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Comments:</td>
+                        <td>{{ comments }}</td>
+                    </tr>
+                </table>
+
+                <a href="/" class="btn btn-primary">Home</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
