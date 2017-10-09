@@ -1,0 +1,20 @@
+h2 {
+  color: #333;
+  margin-top: 3em;
+}
+
+td:nth-of-type(even) {
+  font-style: italic;
+}
+
+form,
+table {
+  padding: 1em;
+  margin: 1em 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+form input[type="text"] {
+  text-transform: capitalize;
+}
