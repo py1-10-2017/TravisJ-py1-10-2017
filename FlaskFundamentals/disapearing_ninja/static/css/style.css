@@ -1,0 +1,12 @@
+h1,
+h3 {
+  text-align: center;
+}
+
+h3 {
+  margin-top: 1em;
+  text-transform: capitalize;
+}
+.row {
+  margin-top: 4em;
+}
