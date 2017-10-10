@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, flash, request, session
 
 app = Flask(__name__)
-app.secret_key = "ThisistheSecretKey2"
+app.secret_key = "ThisistheSecretKey3"
 
 import datetime
 import re
@@ -24,32 +24,27 @@ def success():
     if len(fname) < 1:
         flash('Please enter your name!')
 
-    elif not NAME_REGEX.match(fname):
+    if not NAME_REGEX.match(fname):
         print fname
         flash('Please only use letters to spell your first name.')
 
-    elif len(lname) < 1:
+    if len(lname) < 1:
         print lname
         flash('Please enter your last name!')
 
-    elif not NAME_REGEX.match(lname):
+    if not NAME_REGEX.match(lname):
         flash('Please only use letters to spell your last name.')
 
-    elif len(pword) < 6:
+    if len(pword) < 6:
         flash('Password must be at least 6 characters')
 
-    elif pword != cpword:
+    if pword != cpword:
         flash('Passwords do not match')
 
     else:
         flash('Success! Thanks for registering!')
         session['fname'] = fname
-    return redirect('/registered')
-
-
-@app.route('/registered')
-def registered():
-    return render_template('success.html', fname=session['fname'])
+    return redirect('/')
 
 
 app.run(debug=True)
