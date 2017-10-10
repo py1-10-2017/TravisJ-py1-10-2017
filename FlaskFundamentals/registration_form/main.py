@@ -20,31 +20,42 @@ def success():
     lname = request.form['lname']
     pword = request.form['pass']
     cpword = request.form['confirm-pass']
+    errors = []
 
     if len(fname) < 1:
-        flash('Please enter your name!')
+        errors.append('Please enter your name!')
 
     if not NAME_REGEX.match(fname):
         print fname
-        flash('Please only use letters to spell your first name.')
+        errors.append('Please only use letters to spell your first name.')
 
     if len(lname) < 1:
         print lname
-        flash('Please enter your last name!')
+        errors.append('Please enter your last name!')
 
     if not NAME_REGEX.match(lname):
-        flash('Please only use letters to spell your last name.')
+        errors.append('Please only use letters to spell your last name.')
 
     if len(pword) < 6:
-        flash('Password must be at least 6 characters')
+        errors.append('Password must be at least 6 characters')
 
     if pword != cpword:
-        flash('Passwords do not match')
+        errors.append('Passwords do not match')
 
-    else:
+    if len(errors) == 0:
         flash('Success! Thanks for registering!')
         session['fname'] = fname
+        return redirect('/registered')
+    else:
+        for error in errors:
+            flash(error)
+
     return redirect('/')
+
+
+@app.route('/registered')
+def registered():
+    return render_template('success.html', fname=session['fname'])
 
 
 app.run(debug=True)
