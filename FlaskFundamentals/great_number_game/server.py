@@ -3,7 +3,7 @@ from flask import Flask, render_template, redirect, session, request
 app = Flask(__name__)
 
 
-app.secret_key = 'lskdjf;lajfj'
+app.secret_key = 'lskdjf;lajfr'
 
 import random
 
@@ -12,7 +12,7 @@ import random
 def main():
     if 'winning_number' not in session:
         session['winning_number'] = random.randrange(0, 101)
-        #session['response'] = ''
+        session['response'] = "Take a Guess"
         print session['winning_number'], "- is the winning number"
 
     return render_template('index.html', response=session['response'])
