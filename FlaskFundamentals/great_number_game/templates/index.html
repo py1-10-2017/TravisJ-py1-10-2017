@@ -37,6 +37,13 @@
             font-size: 2em;
             font-weight: bold;
         }
+
+        .answer span {
+            font-size: .5em;
+            display: block;
+            font-weight: normal;
+            font-style: italic;
+        }
     </style>
 </head>
 
@@ -50,6 +57,7 @@
                 <div class="row justify-content-center">
                     <div class="answer col-4">
                         {{ session['response'] }}
+                        <span class="playagain">{{ winner }}</span>
                     </div>
                 </div>
             </div>
