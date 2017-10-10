@@ -44,7 +44,6 @@ def success():
     else:
         flash('Success! Thanks for registering!')
         session['fname'] = fname
-    #     return render_template('success.html', fname=fname, lname=lname)
     return redirect('/registered')
 
 
