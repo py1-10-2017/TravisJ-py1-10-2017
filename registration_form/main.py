@@ -42,13 +42,13 @@ def success():
     if pword != cpword:
         errors.append('Passwords do not match')
 
-    if len(errors) == 0:
+    if len(errors) > 0:
+        for error in errors:
+            flash(error)
+    else:
         flash('Success! Thanks for registering!')
         session['fname'] = fname
         return redirect('/registered')
-    else:
-        for error in errors:
-            flash(error)
 
     return redirect('/')
 
