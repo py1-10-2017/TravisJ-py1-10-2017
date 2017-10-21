@@ -116,7 +116,7 @@ def main():
     userid = session['user'][0]['id']
 
     current_time = datetime.datetime.now()
-    current_minus_30 = datetime.datetime.now() - datetime.timedelta(minutes=1)
+    current_minus_30 = datetime.datetime.now() - datetime.timedelta(minutes=30)
 
     query = 'SELECT m.id, u.id AS user_id, message, CONCAT(first_name, " ",last_name) AS fullname, m.created_at FROM message m INNER JOIN users u on u.id = m.user_id ORDER BY created_at DESC'
 
@@ -174,7 +174,7 @@ def comment(post_id):
 @app.route('/delete/<post_id>')
 def delete_message(post_id):
     # Get current time - 30 minutes
-    current_minus_30 = datetime.datetime.now() - datetime.timedelta(minutes=1)
+    current_minus_30 = datetime.datetime.now() - datetime.timedelta(minutes=30)
 
     # Grab all information about the post
     query = 'SELECT * FROM message WHERE id = :post_id'
@@ -205,7 +205,8 @@ def delete_message(post_id):
 
             return redirect('/wall')
         else:
-            flash('Doh! Posts can only be deleted within thirty minutes of creation.', )
+            flash(
+                'Doh! Posts can only be deleted within thirty minutes of creation.', 'deleteError')
             return redirect('/wall')
 
 
