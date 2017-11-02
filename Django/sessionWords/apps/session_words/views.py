@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
 
+import datetime
+
 # Create your views here.
 
 
@@ -16,20 +18,17 @@ def index(request):
 
 
 def add_word(request):
-    word_obj = {}
+    word_obj = {
+        'created_at': datetime.datetime.now().strftime('%H:%M %p, %B %d, %Y')
+    }
     for key, value in request.POST.iteritems():
         if key != 'big' or key != 'csfmiddlewaretoken':
             word_obj[key] = value
         if key == 'big':
             word_obj['big'] = 'big'
-            print 'ping!'
 
     print word_obj
 
-    # try:
-    #     request.session['words']
-    # except KeyError:
-    #     request.session['words'] = {}
     try:
         request.session['words']
     except KeyError:

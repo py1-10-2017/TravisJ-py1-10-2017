@@ -67,7 +67,14 @@
                 <div class="row">
                     <div class="col-12 word-list">
                         {% for word in word_list %}
-                        <p class="{{ word.color }} {{ word.big }}"> {{ word.word }}</p>
+                        <div class="d-flex flex-row">
+                            <div class="word-list-col">
+                                <span class="{{ word.color }} {{ word.big }}"> {{ word.word }}</span>
+                            </div>
+                            <div class="word-list-col justify-content-end">
+                                <span class="created">{{ word.created_at }}</span>
+                            </div>
+                        </div>
                         {% endfor %}
                     </div>
                 </div>

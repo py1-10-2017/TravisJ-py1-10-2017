@@ -6,6 +6,23 @@ div.main div.col-6:last-child {
     border-left: 1px solid #aeaeae;
 }
 
+div.word-list {
+    margin-top: 2em;
+}
+
+div.word-list-col {
+    border: none !important;
+    vertical-align: middle;
+    flex-basis: 50%;
+    display: flex;
+    align-items: center;
+}
+
+span.created {
+    font-style: italic;
+    color: lightslategrey;
+}
+
 label#form-title {
     font-size: 1.5rem;
 }
