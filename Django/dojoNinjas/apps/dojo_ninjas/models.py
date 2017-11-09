@@ -11,10 +11,10 @@ class Dojo(models.Model):
     city = models.CharField(max_length=255)
     state = models.CharField(max_length=2)
     # Adding new field to Dojo
-    desc = models.CharField(max_length=1000, default="")
+    desc = models.TextField(default="")
 
 
 class Ninja(models.Model):
-    dojo_id = models.IntegerField()
+    dojo_id = models.ForeignKey(Dojo, related_name="ninjas")
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
