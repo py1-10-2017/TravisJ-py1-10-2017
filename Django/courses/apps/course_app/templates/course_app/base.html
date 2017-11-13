@@ -1,0 +1,25 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Courses</title>
+
+
+    <link rel="stylesheet" href="{% static 'course_app/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'course_app/css/style.css' %}">
+
+    <script src="https://use.fontawesome.com/03faeca722.js"></script>
+    <script src="{% static 'course_app/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'course_app/js/main.js' %}"></script>
+</head>
+
+<body>
+
+    {% block content %} {% endblock %}
+
+</body>
+
+</html>

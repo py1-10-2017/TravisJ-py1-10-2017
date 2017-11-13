@@ -1,0 +1,43 @@
+h1.title,
+h2.title {
+    margin-top: 2em;
+}
+
+table.course-list {
+    margin: 1.5em 0;
+}
+
+ul.messages {
+    list-style: none;
+    margin: .5em 0;
+    padding: 0;
+}
+
+ul.messages li {
+    padding: .5em;
+    margin-bottom: .5em;
+    border-radius: 5px;
+}
+
+form#comment-form {
+    margin-bottom: 1em;
+}
+
+div.comment {
+    background-color: #eaeaea;
+    padding: .5em;
+    border: 1px solid #aeaeae;
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+
+span.timestamp {
+    font-size: 60%;
+    color: #888;
+    font-style: italic;
+    display: block;
+}
+
+a.home-btn {
+    margin: 2em 0;
+}

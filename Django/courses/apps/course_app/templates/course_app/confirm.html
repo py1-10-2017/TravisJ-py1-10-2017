@@ -1,0 +1,21 @@
+{% extends 'course_app/base.html' %} {% block content %}
+<div class="container">
+    <h2 class="title">Slow down player! You sure you want to delete the following course?!</h2>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <tr>
+                    <td>Name:</td>
+                    <td>{{ course.name }}</td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td>{{ course.description }}</td>
+                </tr>
+            </table>
+            <a href="/" class="btn btn-secondary">No thanks</a>
+            <a href="/{{ course.id }}/delete" class="btn btn-danger">Yes! I want to delete this course</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
