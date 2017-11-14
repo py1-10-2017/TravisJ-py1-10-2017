@@ -18,15 +18,18 @@ def index(request):
 
 
 def add(request):
-    errors = Course.objects.course_validator(request.POST)
+    if request.method == 'POST':
+        errors = Course.objects.course_validator(request.POST)
 
-    if len(errors):
-        for error in errors:
-            messages.error(request, error)
+        if len(errors):
+            for error in errors:
+                messages.error(request, error)
+        else:
+            Course.objects.add_course(request.POST)
+
+        return redirect('/')
     else:
-        Course.objects.add_course(request.POST)
-
-    return redirect('/')
+        return redirect('/')
 
 
 def remove(request, course_id):
@@ -52,10 +55,12 @@ def comment(request, course_id):
 
 
 def add_comment(request, course_id):
+    if request.method == 'POST':
+        comment = Comment.objects.add_comment(request.POST, course_id)
 
-    comment = Comment.objects.add_comment(request.POST, course_id)
-
-    return redirect('/' + course_id + '/comment')
+        return redirect('/' + course_id + '/comment')
+    else:
+        return redirect('/' + course_id + '/comment')
 
 
 def delete_comment(request, course_id, comment_id):
