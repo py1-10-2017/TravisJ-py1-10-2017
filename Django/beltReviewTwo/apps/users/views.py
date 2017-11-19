@@ -11,7 +11,7 @@ from django.contrib import messages
 
 def index(request):
     if 'user' not in request.session:
-        return redirect('/')
+        return render(request, 'users/welcome.html')
     else:
         return HttpResponseRedirect(reverse('reviews:index'))
 
@@ -37,7 +37,7 @@ def register(request):
         errors = User.objects.user_validator(request.POST)
 
         if errors:
-            for error in error:
+            for error in errors:
                 messages.error(request, error)
             return redirect('/')
 
@@ -50,3 +50,8 @@ def register(request):
             return HttpResponseRedirect(reverse('reviews:index'))
     else:
         return redirect('/')
+
+
+def logout(request):
+    request.session.pop('user')
+    return redirect('/')

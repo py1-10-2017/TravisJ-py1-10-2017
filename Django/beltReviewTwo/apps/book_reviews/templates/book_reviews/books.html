@@ -8,7 +8,7 @@
 
         {% for book in books %}
         <div class="book">
-            <a href="/books/{{ book.id }}">
+            <a href="{% url 'reviews:book_detail' book.id %}">
                 <h5>{{ book.title }}</h5>
             </a>
             {% for review in reviews %} {% if review.book.id == book.id %}
@@ -20,7 +20,7 @@
 
                 <div class="reviews">
                     <p>
-                        <a href="users/{{ review.reviewer.id }}">{{ review.reviewer.name }}</a> says: {{ review.review }}</p>
+                        <a href="{% url 'reviews:user_detail' review.reviewer.id %}">{{ review.reviewer.name }}</a> says: {{ review.review }}</p>
 
                     <div class="row">
                         <span class="col-6 timestamp">{{ review.created_at }}</span>
@@ -39,7 +39,7 @@
             <ul>
                 {% for book in all_books %}
                 <li>
-                    <a href="/books/{{ book.id }}">{{book.title}}</a>
+                    <a href="{% url 'reviews:book_detail' book.id %}">{{book.title}}</a>
                 </li>
                 {% endfor %}
             </ul>
